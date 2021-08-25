@@ -1,7 +1,6 @@
 <template>
   <div class="app-container">
-    <el-button type="primary" @click="showDialog = !showDialog">添加</el-button>
-    <Add :visible.sync="showDialog" />
+    <Add />
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -79,7 +78,6 @@ export default {
     return {
       list: null,
       listLoading: true,
-      showDialog: false,
     };
   },
   created() {
