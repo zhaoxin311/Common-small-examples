@@ -34,7 +34,7 @@ export default {
     // 打开弹出框
     addfrom() {
       // 清空之前的富文本内容
-      this.text = "";
+      this.text = "qqqqqqq";
       // 更改弹出框的标题
       this.eldialog = "编辑富文本";
       // 显示富文本
