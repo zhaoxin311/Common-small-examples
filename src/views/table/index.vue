@@ -1,5 +1,7 @@
 <template>
   <div class="app-container">
+    <el-button type="primary" @click="showDialog = !showDialog">添加</el-button>
+    <Add :visible.sync="showDialog" />
     <el-table
       v-loading="listLoading"
       :data="list"
@@ -28,12 +30,24 @@
           {{ scope.row.pageviews }}
         </template>
       </el-table-column>
-      <el-table-column class-name="status-col" label="Status" width="110" align="center">
+      <el-table-column
+        class-name="status-col"
+        label="Status"
+        width="110"
+        align="center"
+      >
         <template slot-scope="scope">
-          <el-tag :type="scope.row.status | statusFilter">{{ scope.row.status }}</el-tag>
+          <el-tag :type="scope.row.status | statusFilter">{{
+            scope.row.status
+          }}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="created_at" label="Display_time" width="200">
+      <el-table-column
+        align="center"
+        prop="created_at"
+        label="Display_time"
+        width="200"
+      >
         <template slot-scope="scope">
           <i class="el-icon-time" />
           <span>{{ scope.row.display_time }}</span>
@@ -44,36 +58,42 @@
 </template>
 
 <script>
-import { getList } from '@/api/table'
+import { getList } from "@/api/table";
+import Add from "@/components/Articleadd";
 
 export default {
   filters: {
     statusFilter(status) {
       const statusMap = {
-        published: 'success',
-        draft: 'gray',
-        deleted: 'danger'
-      }
-      return statusMap[status]
-    }
+        published: "success",
+        draft: "gray",
+        deleted: "danger",
+      };
+      return statusMap[status];
+    },
+  },
+  components: {
+    Add,
   },
   data() {
     return {
       list: null,
-      listLoading: true
-    }
+      listLoading: true,
+      showDialog: false,
+    };
   },
   created() {
-    this.fetchData()
+    this.fetchData();
   },
+
   methods: {
     fetchData() {
-      this.listLoading = true
-      getList().then(response => {
-        this.list = response.data.items
-        this.listLoading = false
-      })
-    }
-  }
-}
+      this.listLoading = true;
+      getList().then((response) => {
+        this.list = response.data.items;
+        this.listLoading = false;
+      });
+    },
+  },
+};
 </script>
