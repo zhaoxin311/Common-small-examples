@@ -9,8 +9,16 @@
       :before-close="handleClose"
       @opened="eldialingShow"
     >
-      <div id="content" />
+      <div id="div1" class="toolbar" />
+      <div style="padding: 5px 0; color: #ccc">中间隔离带</div>
+      <div id="div2" class="text">
+        <!--可使用 min-height 实现编辑区域自动增加高度-->
+        <p>请输入内容</p>
+      </div>
       <span>这是一段信息</span>
+      <div>
+        <Form id="form" />
+      </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button @click="dialogVisible = false">确 定</el-button>
@@ -21,7 +29,9 @@
 
 <script>
 import E from "wangeditor";
+import Form from "./components/form.vue";
 export default {
+  components: { Form },
   data() {
     return {
       eldialog: "",
@@ -29,12 +39,11 @@ export default {
       dialogVisible: false,
     };
   },
-  computed: {},
   methods: {
     // 打开弹出框
     addfrom() {
       // 清空之前的富文本内容
-      this.text = "qqqqqqq";
+      this.text = "";
       // 更改弹出框的标题
       this.eldialog = "编辑富文本";
       // 显示富文本
@@ -54,7 +63,7 @@ export default {
       if (this.text === "") {
         const that = this;
         // 富文本编辑器创建，获取节点
-        const editor = new E(document.getElementById("content"));
+        const editor = new E("#div1", "#div2"); // 两个参数也可以传入 elem 对象，class 选择器
         editor.config.onchange = function (newHtml) {
           // that.editorContent即为最新的富文本内容
           that.editorContent = newHtml;
@@ -65,7 +74,7 @@ export default {
       } else {
         this.textare = this.text;
         const that = this;
-        const editor = new E(document.getElementById("content"));
+        const editor = new E("#div1", "#div2"); // 两个参数也可以传入 elem 对象，class 选择器
         this.textare.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
         editor.config.onchange = function (newHtml) {
           // that.editorContent即为最新的富文本内容
@@ -99,3 +108,13 @@ export default {
   },
 };
 </script>
+
+<style>
+.toolbar {
+  border: 1px solid #ccc;
+}
+.text {
+  border: 1px solid #ccc;
+  min-height: 400px;
+}
+</style>

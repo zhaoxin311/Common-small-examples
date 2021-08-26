@@ -63,6 +63,12 @@ export const constantRoutes = [
     meta: { title: 'Example', icon: 'el-icon-s-help' },
     children: [
       {
+        path: 'Ceshi',
+        name: 'Ceshi',
+        component: () => import('@/views/ceshi/index'),
+        meta: { title: 'Ceshi', icon: 'table' }
+      },
+      {
         path: 'Ckeditor',
         name: 'Ckeditor',
         component: () => import('@/views/ckeditor/index'),
