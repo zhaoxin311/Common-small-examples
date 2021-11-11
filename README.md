@@ -88,3 +88,34 @@ Modern browsers and Internet Explorer 10+.
 [MIT](https://github.com/PanJiaChen/vue-admin-template/blob/master/LICENSE) license.
 
 Copyright (c) 2017-present PanJiaChen
+
+<!-- 上方内容是官方readme文件 -->
+<!-- 以下内容为ZhaoXin311按照本人意愿添加 -->
+## src文件 简单解读
+### api 和 views
+当项目达到一定的大小时，api模块会越来越多，建议根据业务模块来划分 views，并且 将views 和 api 两个模块一一对应，从而方便维护。
+
+### components
+components 放置的都是全局公用的一些组件，如上传组件，富文本等等。一些页面级的组件建议还是放在各自views文件下，方便管理。
+
+### store
+不要为了用vuex而用vuex,耦合度很低的模块之间没必要使用vuex来储存data。有些数据需要使用vuex来统一管理，如：登录token，用户信息，全局个人偏好设置等，这些还是使用vuex管理更加方便。
+
+### webpack
+这里是用 vue-cli 的 webpack-template 为基础模板构建的，其他自行百度
+
+### alias
+alias 指向src目录下，再使用相对路径找文件
+```
+resolve: {
+  alias: {
+    '@': resolve('src')
+  }
+}
+//使用
+import stickTop from '@/components/stickTop'
+```
+
+
+
+
