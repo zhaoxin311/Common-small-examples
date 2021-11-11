@@ -1,3 +1,6 @@
+// eslint 配置项
+
+
 module.exports = {
   root: true,
   parserOptions: {
