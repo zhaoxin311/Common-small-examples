@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button type="success" @click="addfrom">添加</el-button>
+    <el-button type="success" @click="addfrom">添  ddddd 加</el-button>
 
     <el-dialog
       :title="eldialog"
