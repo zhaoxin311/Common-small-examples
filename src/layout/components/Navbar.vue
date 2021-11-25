@@ -93,23 +93,23 @@ export default {
       outline: none;
     }
 
-    .right-menu-item {
-      display: inline-block;
-      padding: 0 8px;
-      height: 100%;
-      font-size: 18px;
-      color: #5a5e66;
-      vertical-align: text-bottom;
+    // .right-menu-item {
+    //   display: inline-block;
+    //   padding: 0 8px;
+    //   height: 100%;
+    //   font-size: 18px;
+    //   color: #5a5e66;
+    //   vertical-align: text-bottom;
 
-      &.hover-effect {
-        cursor: pointer;
-        transition: background .3s;
+    //   &.hover-effect {
+    //     cursor: pointer;
+    //     transition: background .3s;
 
-        &:hover {
-          background: rgba(0, 0, 0, .025)
-        }
-      }
-    }
+    //     &:hover {
+    //       background: rgba(0, 0, 0, .025)
+    //     }
+    //   }
+    // }
 
     .avatar-container {
       margin-right: 30px;
